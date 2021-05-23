@@ -6,7 +6,8 @@ typedef vector <int> v;
 
 int checkVectorLength();
 v populateVector(int count);
-v subVector(v V1, v V2);
+v subVector(v V1, v V2, int count);
+v mulVector(v V1, v V2, int count);
 void printVector(v fnVector);
 
 int main(){
@@ -26,8 +27,11 @@ int main(){
     printVector(V2);
 
     cout<<"\n\nSubstracting vector 2 from vector 1"<<std::endl;
-    V3 = subVector(V1, V2);
-    // V3[0] = V2[0]-V1[0];
+    V3 = subVector(V1, V2, count);
+    printVector(V3);
+
+    cout<<"\n\nMultiplying vector 1 elements with vector 2 elements"<<std::endl;
+    V3 = mulVector(V1, V2, count);
     printVector(V3);
 
 
@@ -48,11 +52,20 @@ int checkVectorLength(){
     return m;
 }
 
-v subVector(v V1, v V2){
-    v resultVector (3);
+v subVector(v V1, v V2, int count){
+    v resultVector (count);
     
     for(int i=0; i<V1.size(); i++){
         resultVector[i] = V2[i]-V1[i];
+    }
+    return resultVector;
+}
+
+v mulVector(v V1, v V2, int count){
+    v resultVector (count);
+    
+    for(int i=0; i<V1.size(); i++){
+        resultVector[i] = V2[i]*V1[i];
     }
     return resultVector;
 }
